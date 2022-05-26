@@ -1,0 +1,66 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.codezl'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile ('org.springframework.boot:spring-boot-starter-web:2.6.6') {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    compileOnly 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    //implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha7'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-nop
+    //testImplementation group: 'org.slf4j', name: 'slf4j-nop', version: '2.0.0-alpha7'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
+    //testImplementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '2.0.0-alpha7', ext: 'pom'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    //testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha7'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    //testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.8.0-beta0'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    //implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.8.0-beta0'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    // https://mvnrepository.com/artifact/org.springframework/spring-websocket
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '2.6.6'
+    // https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket
+    implementation group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.3'
+    // https://mvnrepository.com/artifact/com.alibaba/fastjson
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.80'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.6.6'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-pool2
+    implementation group: 'org.apache.commons', name: 'commons-pool2', version: '2.11.1'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.6.6'
+    // https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
+    implementation group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.8.5'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.6.6'
+
+}
+
+test {
+    useJUnitPlatform()
+}

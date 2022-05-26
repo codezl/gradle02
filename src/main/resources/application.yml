@@ -1,0 +1,52 @@
+# 应用名称
+server:
+  port: 8089
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+    cache: false
+    suffix: .html
+    prefix: classpath:/static/templates/
+    mode: HTML5
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    database: 0
+    lettuce:
+      shutdown-timeout: 10s
+      pool:
+        #最小空閑
+        min-idle: 0
+        #最大空閑
+        max-idle: 8
+        #最大连接
+        max-active: 8
+        #最大阻塞等待，负数无限制
+        max-wait: -1m
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: default_cosumer_group
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+
+am:
+  dogs:
+    - d1
+    - d2
+    - d3
+    - d4
+  num: ${random.int(10)}
+  couple: {couple1: d1-d3,couple2: d2-d4}
+  person:
+    name: pet_owner
+    age: 12
+
+#kafka
